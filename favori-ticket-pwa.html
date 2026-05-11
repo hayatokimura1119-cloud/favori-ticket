@@ -17,8 +17,6 @@
     --dark2: #2A2520;
     --dark3: #3A3530;
     --cream: #F5F0E8;
-    --cream2: #EDE8DC;
-    --text: #2A2520;
     --text2: #6B6058;
     --success: #3D7A5A;
     --success-bg: #EAF4EE;
@@ -27,298 +25,105 @@
     --warning: #7A5C1E;
     --warning-bg: #F4EDD8;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--dark); color: var(--cream); min-height: 100vh; overscroll-behavior: none; }
 
-  body {
-    font-family: 'Noto Sans JP', sans-serif;
-    background: var(--dark);
-    color: var(--cream);
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-    overscroll-behavior: none;
-  }
-
-  header {
-    background: var(--dark2);
-    border-bottom: 1px solid #3A3530;
-    padding: 16px 20px 12px;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  header .brand {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-weight: 300;
-    letter-spacing: 0.2em;
-    color: var(--gold);
-  }
-  header .subtitle {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: var(--text2);
-    margin-top: 2px;
-  }
-  .sync-status {
-    font-size: 10px;
-    color: var(--text2);
-    margin-top: 4px;
-  }
+  header { background: var(--dark2); border-bottom: 1px solid #3A3530; padding: 14px 20px 10px; text-align: center; position: sticky; top: 0; z-index: 100; }
+  .brand { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; letter-spacing: 0.2em; color: var(--gold); }
+  .subtitle { font-size: 10px; letter-spacing: 0.15em; color: var(--text2); margin-top: 2px; }
+  .sync-status { font-size: 10px; color: var(--text2); margin-top: 3px; }
   .sync-status.ok { color: #5AAA7A; }
   .sync-status.err { color: #C07070; }
 
-  .tabs {
-    display: flex;
-    background: var(--dark2);
-    border-bottom: 1px solid #3A3530;
-  }
-  .tab {
-    flex: 1;
-    padding: 12px 8px;
-    text-align: center;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    color: var(--text2);
-    cursor: pointer;
-    transition: all 0.2s;
-    border-bottom: 2px solid transparent;
-  }
+  .tabs { display: flex; background: var(--dark2); border-bottom: 1px solid #3A3530; }
+  .tab { flex: 1; padding: 12px 8px; text-align: center; font-size: 12px; letter-spacing: 0.08em; color: var(--text2); cursor: pointer; transition: all 0.2s; border-bottom: 2px solid transparent; }
   .tab.active { color: var(--gold); border-bottom-color: var(--gold); }
 
-  .content { padding: 20px 16px 40px; max-width: 480px; margin: 0 auto; }
+  .content { padding: 20px 16px 60px; max-width: 480px; margin: 0 auto; }
   .panel { display: none; }
   .panel.active { display: block; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; color: var(--gold-light); margin-bottom: 16px; letter-spacing: 0.05em; }
 
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--gold-light);
-    margin-bottom: 16px;
-    letter-spacing: 0.05em;
-  }
+  .scan-box { background: var(--dark2); border: 1px solid #3A3530; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .scan-box label { font-size: 11px; letter-spacing: 0.1em; color: var(--text2); display: block; margin-bottom: 10px; }
 
-  .scan-box {
-    background: var(--dark2);
-    border: 1px solid #3A3530;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 16px;
-  }
-  .scan-box label {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    color: var(--text2);
-    display: block;
-    margin-bottom: 8px;
-  }
-  .code-input-row { display: flex; gap: 8px; }
+  /* 縦並びレイアウト */
+  .code-input-stack { display: flex; flex-direction: column; gap: 10px; }
 
   input[type="text"], input[type="number"], input[type="date"], select {
-    background: var(--dark3);
-    border: 1px solid #4A4540;
-    border-radius: 8px;
-    padding: 12px 14px;
-    color: var(--cream);
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 15px;
-    outline: none;
-    transition: border-color 0.2s;
-    width: 100%;
-    -webkit-appearance: none;
+    background: var(--dark3); border: 1px solid #4A4540; border-radius: 8px;
+    padding: 13px 14px; color: var(--cream); font-family: 'Noto Sans JP', sans-serif;
+    font-size: 16px; outline: none; transition: border-color 0.2s; width: 100%; -webkit-appearance: none;
   }
-  input[type="text"] { flex: 1; width: auto; }
-  input[type="text"]:focus, input[type="number"]:focus,
-  input[type="date"]:focus, select:focus { border-color: var(--gold); }
-  input::placeholder { color: #5A5550; }
+  input:focus, select:focus { border-color: var(--gold); }
+  input::placeholder { color: #5A5550; font-size: 14px; }
 
-  .btn {
-    background: var(--gold);
-    color: var(--dark);
-    border: none;
-    border-radius: 8px;
-    padding: 12px 20px;
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    cursor: pointer;
-    transition: all 0.2s;
-    white-space: nowrap;
-  }
+  .btn { background: var(--gold); color: #1A1712; border: none; border-radius: 8px; padding: 14px 20px; font-family: 'Noto Sans JP', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.08em; cursor: pointer; transition: all 0.15s; width: 100%; display: block; text-align: center; }
   .btn:active { transform: scale(0.97); opacity: 0.85; }
-  .btn-outline {
-    background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-  }
-  .btn-full { width: 100%; margin-top: 10px; padding: 14px; font-size: 14px; }
-  .btn-sm { padding: 8px 14px; font-size: 12px; }
+  .btn-camera { background: var(--dark3); border: 1px solid #4A4540; color: var(--cream); font-size: 14px; padding: 13px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .btn-outline { background: transparent; border: 1px solid #4A4540; color: var(--text2); font-size: 13px; padding: 12px; }
+  .btn-sm { padding: 8px 14px; font-size: 12px; width: auto; display: inline-block; }
   .btn-danger { background: var(--danger); color: #fff; }
 
-  .result-card {
-    border-radius: 12px;
-    padding: 20px;
-    margin-top: 16px;
-    display: none;
-    animation: fadeIn 0.3s ease;
-  }
+  /* QRスキャナー */
+  .scanner-wrap { display: none; margin-top: 12px; border-radius: 10px; overflow: hidden; position: relative; background: #000; aspect-ratio: 1; }
+  .scanner-wrap.show { display: block; }
+  #scanner-video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .scanner-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+  .scanner-frame { width: 60%; aspect-ratio: 1; border: 2px solid var(--gold); border-radius: 12px; box-shadow: 0 0 0 9999px rgba(0,0,0,0.5); position: relative; overflow: hidden; }
+  .scanner-line { position: absolute; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); animation: scan 2s ease-in-out infinite; }
+  @keyframes scan { 0%,100% { top: 0; } 50% { top: calc(100% - 2px); } }
+  .btn-cancel { margin-top: 8px; background: transparent; border: 1px solid #4A4540; color: var(--text2); border-radius: 8px; padding: 10px; font-size: 12px; width: 100%; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; }
+
+  .result-card { border-radius: 12px; padding: 20px; margin-top: 16px; display: none; animation: fadeIn 0.3s ease; }
   .result-card.show { display: block; }
   .result-card.valid { background: var(--success-bg); border: 1px solid #3D7A5A; }
   .result-card.used { background: var(--danger-bg); border: 1px solid var(--danger); }
   .result-card.not-found { background: var(--warning-bg); border: 1px solid #C9A84C; }
-  .result-status {
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  .result-status { font-size: 16px; font-weight: 500; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
   .result-card.valid .result-status { color: var(--success); }
   .result-card.used .result-status { color: var(--danger); }
   .result-card.not-found .result-status { color: var(--warning); }
-  .result-detail { font-size: 13px; color: var(--text); line-height: 1.9; }
+  .result-detail { font-size: 13px; color: #2A2520; line-height: 1.9; }
   .result-detail strong { font-weight: 500; }
 
-  .loading-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(26,23,18,0.75);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 12px;
-  }
+  .loading-overlay { display: none; position: fixed; inset: 0; background: rgba(26,23,18,0.75); z-index: 200; align-items: center; justify-content: center; flex-direction: column; gap: 12px; }
   .loading-overlay.show { display: flex; }
-  .spinner {
-    width: 32px; height: 32px;
-    border: 2px solid #3A3530;
-    border-top-color: var(--gold);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-  }
+  .spinner { width: 32px; height: 32px; border: 2px solid #3A3530; border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; }
   .loading-text { font-size: 12px; color: var(--text2); letter-spacing: 0.1em; }
 
   .form-group { margin-bottom: 14px; }
-  .form-group label {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    color: var(--text2);
-    display: block;
-    margin-bottom: 6px;
-  }
+  .form-group label { font-size: 11px; letter-spacing: 0.1em; color: var(--text2); display: block; margin-bottom: 6px; }
 
-  .ticket-preview {
-    background: linear-gradient(135deg, #1A1712 0%, #2A2218 100%);
-    border: 1px solid var(--gold);
-    border-radius: 12px;
-    padding: 24px;
-    margin-top: 16px;
-    display: none;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
+  .ticket-preview { background: linear-gradient(135deg, #1A1712 0%, #2A2218 100%); border: 1px solid var(--gold); border-radius: 12px; padding: 24px; margin-top: 16px; display: none; text-align: center; position: relative; overflow: hidden; }
   .ticket-preview.show { display: block; animation: fadeIn 0.3s ease; }
-  .ticket-preview::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  }
-  .ticket-brand {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 300;
-    letter-spacing: 0.25em;
-    color: var(--gold);
-    margin-bottom: 4px;
-  }
+  .ticket-preview::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .ticket-brand { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; letter-spacing: 0.25em; color: var(--gold); margin-bottom: 4px; }
   .ticket-type { font-size: 10px; letter-spacing: 0.2em; color: var(--text2); margin-bottom: 16px; }
-  .ticket-amount {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 36px;
-    font-weight: 300;
-    color: var(--cream);
-    margin-bottom: 12px;
-  }
+  .ticket-amount { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--cream); margin-bottom: 12px; }
   .ticket-amount span { font-size: 16px; margin-right: 4px; }
   .ticket-code { font-size: 13px; letter-spacing: 0.15em; color: var(--gold-light); margin-bottom: 6px; font-family: monospace; }
   .ticket-expiry { font-size: 10px; color: var(--text2); margin-bottom: 16px; }
-  .qr-area { margin: 0 auto 14px; }
-  .qr-area img { width: 90px; height: 90px; border-radius: 6px; }
+  .qr-area img { width: 90px; height: 90px; border-radius: 6px; margin-bottom: 14px; }
 
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-  .stat-card {
-    background: var(--dark2);
-    border: 1px solid #3A3530;
-    border-radius: 10px;
-    padding: 14px 10px;
-    text-align: center;
-  }
-  .stat-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
-    color: var(--gold);
-  }
+  .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 20px; }
+  .stat-card { background: var(--dark2); border: 1px solid #3A3530; border-radius: 10px; padding: 14px 10px; text-align: center; }
+  .stat-value { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--gold); }
   .stat-label { font-size: 10px; color: var(--text2); margin-top: 2px; }
 
   .ticket-list { display: flex; flex-direction: column; gap: 10px; }
-  .ticket-item {
-    background: var(--dark2);
-    border: 1px solid #3A3530;
-    border-radius: 10px;
-    padding: 14px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-  }
+  .ticket-item { background: var(--dark2); border: 1px solid #3A3530; border-radius: 10px; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
   .ticket-item-left { flex: 1; min-width: 0; }
   .ticket-item-code { font-size: 13px; font-family: monospace; letter-spacing: 0.1em; color: var(--gold-light); margin-bottom: 4px; }
   .ticket-item-info { font-size: 11px; color: var(--text2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .badge {
-    font-size: 10px;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-weight: 500;
-    white-space: nowrap;
-  }
+  .badge { font-size: 10px; padding: 4px 10px; border-radius: 20px; font-weight: 500; white-space: nowrap; }
   .badge-unused { background: rgba(61,122,90,0.2); color: #5AAA7A; border: 1px solid rgba(61,122,90,0.4); }
   .badge-used { background: rgba(139,58,58,0.2); color: #C07070; border: 1px solid rgba(139,58,58,0.4); }
 
-  .note {
-    font-size: 11px;
-    color: var(--text2);
-    line-height: 1.7;
-    background: rgba(201,168,76,0.06);
-    border-left: 2px solid var(--gold);
-    padding: 10px 14px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 12px;
-  }
-  .ledger-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-  }
+  .note { font-size: 11px; color: var(--text2); line-height: 1.7; background: rgba(201,168,76,0.06); border-left: 2px solid var(--gold); padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 12px; }
+  .ledger-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes spin { to { transform: rotate(360deg); } }
 </style>
 </head>
@@ -347,12 +152,23 @@
   <div class="panel active" id="panel-scan">
     <p class="section-title">食事券を確認する</p>
     <div class="scan-box">
-      <label>券コードを入力</label>
-      <div class="code-input-row">
-        <input type="text" id="scan-input" placeholder="FAV-001" oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key==='Enter')checkTicket()">
-        <button class="btn" onclick="checkTicket()">確認</button>
+      <label>券コードを入力 または QRをスキャン</label>
+      <div class="code-input-stack">
+        <input type="text" id="scan-input" placeholder="例：FAV-001" oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key==='Enter')checkTicket()">
+        <button class="btn" onclick="checkTicket()">確認する</button>
+        <button class="btn btn-camera" onclick="toggleScanner()">
+          <span>📷</span><span id="scan-btn-label">QRコードをスキャン</span>
+        </button>
       </div>
-      <button class="btn btn-outline btn-full" onclick="simulateScan()">📷 デモ：ランダムで確認</button>
+      <div class="scanner-wrap" id="scanner-wrap">
+        <video id="scanner-video" autoplay playsinline muted></video>
+        <div class="scanner-overlay">
+          <div class="scanner-frame">
+            <div class="scanner-line"></div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-cancel" id="btn-cancel-scan" style="display:none" onclick="stopScanner()">スキャンをキャンセル</button>
     </div>
 
     <div class="result-card" id="result-card">
@@ -361,10 +177,10 @@
         <span id="result-title"></span>
       </div>
       <div class="result-detail" id="result-detail"></div>
-      <button class="btn btn-full" id="btn-use" onclick="markAsUsed()" style="display:none;margin-top:14px;">この券を使用済にする</button>
+      <button class="btn btn-danger" id="btn-use" onclick="markAsUsed()" style="display:none;margin-top:14px;">この券を使用済にする</button>
     </div>
 
-    <div class="note">QRコードリーダーアプリでスキャンすると、このアプリが自動で開いてコードが入力されます。</div>
+    <div class="note">「QRコードをスキャン」でカメラが起動し、QRを読み取ると自動で確認します。カメラ許可が必要です。</div>
   </div>
 
   <!-- 発行パネル -->
@@ -387,15 +203,12 @@
         <label>有効期限</label>
         <input type="date" id="issue-expiry" value="2026-12-31">
       </div>
-      <button class="btn btn-full" onclick="issueTicket()">発行してシートに記録する</button>
+      <button class="btn" onclick="issueTicket()">発行してシートに記録する</button>
     </div>
-
     <div class="ticket-preview" id="ticket-preview">
       <div class="ticket-brand">BISTRO FAVORI</div>
       <div class="ticket-type" id="prev-type">GIFT VOUCHER</div>
-      <div class="qr-area">
-        <img id="prev-qr" src="" alt="QRコード">
-      </div>
+      <div class="qr-area"><img id="prev-qr" src="" alt="QRコード"></div>
       <div class="ticket-amount"><span>¥</span><span id="prev-amount">10,000</span></div>
       <div class="ticket-code" id="prev-code">FAV-001</div>
       <div class="ticket-expiry" id="prev-expiry">有効期限：2026年12月31日まで</div>
@@ -407,7 +220,7 @@
   <div class="panel" id="panel-ledger">
     <div class="ledger-header">
       <p class="section-title" style="margin:0">発行済み一覧</p>
-      <button class="btn btn-sm btn-outline" onclick="loadLedger()">更新</button>
+      <button class="btn btn-sm btn-outline" onclick="loadLedger()" style="width:auto">更新</button>
     </div>
     <div class="stats-row" id="stats-row">
       <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">発行枚数</div></div>
@@ -421,28 +234,29 @@
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
 <script>
 const API = 'https://script.google.com/macros/s/AKfycbzxjPIOTPu9QyTv8BExGd8J0yFb3Oxxal8m2mX7fbOjWt3yfY56EVLDbojP422Yen57ew/exec';
+let scannerStream = null;
+let scannerTimer = null;
+let currentTicket = null;
 
 function loading(show, text) {
   document.getElementById('loading').classList.toggle('show', show);
   if (text) document.getElementById('loading-text').textContent = text;
 }
-
 function setSyncStatus(ok, msg) {
   const el = document.getElementById('sync-status');
   el.textContent = msg;
   el.className = 'sync-status ' + (ok ? 'ok' : 'err');
 }
-
 async function callAPI(params) {
-  const url = API + '?' + new URLSearchParams(params);
-  const res = await fetch(url);
+  const res = await fetch(API + '?' + new URLSearchParams(params));
   return await res.json();
 }
 
-// ===== タブ切替 =====
 function switchTab(name, el) {
+  stopScanner();
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   el.classList.add('active');
@@ -450,68 +264,105 @@ function switchTab(name, el) {
   if (name === 'ledger') loadLedger();
 }
 
-// ===== 消込 =====
-let currentTicket = null;
+// QRスキャナー
+async function toggleScanner() {
+  if (scannerStream) { stopScanner(); return; }
+  try {
+    scannerStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+    document.getElementById('scanner-video').srcObject = scannerStream;
+    document.getElementById('scanner-wrap').classList.add('show');
+    document.getElementById('btn-cancel-scan').style.display = 'block';
+    document.getElementById('scan-btn-label').textContent = 'スキャン中...';
+    scanLoop();
+  } catch(e) {
+    alert('カメラへのアクセスが許可されていません。\nブラウザの設定からカメラを許可してください。');
+  }
+}
 
+function scanLoop() {
+  const video = document.getElementById('scanner-video');
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  function tick() {
+    if (!scannerStream) return;
+    if (video.readyState === video.HAVE_ENOUGH_DATA) {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const code = jsQR(img.data, img.width, img.height);
+      if (code && code.data) {
+        document.getElementById('scan-input').value = code.data.trim().toUpperCase();
+        stopScanner();
+        checkTicket();
+        return;
+      }
+    }
+    scannerTimer = requestAnimationFrame(tick);
+  }
+  scannerTimer = requestAnimationFrame(tick);
+}
+
+function stopScanner() {
+  if (scannerStream) { scannerStream.getTracks().forEach(t => t.stop()); scannerStream = null; }
+  if (scannerTimer) { cancelAnimationFrame(scannerTimer); scannerTimer = null; }
+  document.getElementById('scanner-wrap').classList.remove('show');
+  document.getElementById('btn-cancel-scan').style.display = 'none';
+  document.getElementById('scan-btn-label').textContent = 'QRコードをスキャン';
+}
+
+// 消込
 async function checkTicket() {
   const code = document.getElementById('scan-input').value.trim().toUpperCase();
   if (!code) return;
-
   loading(true, 'Googleシートを確認中...');
   try {
     const data = await callAPI({ action: 'getAll' });
     setSyncStatus(true, 'Googleシートと同期済み ✓');
-
     const ticket = (data.tickets || []).find(t => String(t['券コード']).trim() === code);
     showResult(code, ticket);
   } catch(e) {
     setSyncStatus(false, 'シートへの接続に失敗');
     showError();
-  } finally {
-    loading(false);
-  }
+  } finally { loading(false); }
 }
 
 function showResult(code, ticket) {
   currentTicket = ticket || null;
   const card = document.getElementById('result-card');
-  const icon = document.getElementById('result-icon');
-  const title = document.getElementById('result-title');
-  const detail = document.getElementById('result-detail');
   const btnUse = document.getElementById('btn-use');
-
   card.className = 'result-card show';
   btnUse.style.display = 'none';
 
   if (!ticket) {
     card.classList.add('not-found');
-    icon.textContent = '⚠️';
-    title.textContent = '該当する券が見つかりません';
-    detail.innerHTML = `コード <strong>${code}</strong> は台帳に登録されていません。`;
+    document.getElementById('result-icon').textContent = '⚠️';
+    document.getElementById('result-title').textContent = '該当する券が見つかりません';
+    document.getElementById('result-detail').innerHTML = `コード <strong>${code}</strong> は台帳に登録されていません。`;
     return;
   }
 
   const today = new Date().toISOString().slice(0, 10);
   const expiry = String(ticket['有効期限'] || '').slice(0, 10);
-  const status = ticket['状態'];
   const amount = Number(ticket['金額'] || 0).toLocaleString();
 
-  if (status === '使用済') {
+  if (ticket['状態'] === '使用済') {
     card.classList.add('used');
-    icon.textContent = '✗';
-    title.textContent = '使用済みの券です';
-    detail.innerHTML = `<strong>コード：</strong>${ticket['券コード']}<br><strong>種別：</strong>${ticket['種別']}<br><strong>金額：</strong>¥${amount}<br><strong>使用日：</strong>${ticket['使用日'] || '—'}`;
+    document.getElementById('result-icon').textContent = '✗';
+    document.getElementById('result-title').textContent = '使用済みの券です';
+    document.getElementById('result-detail').innerHTML = `<strong>コード：</strong>${ticket['券コード']}<br><strong>種別：</strong>${ticket['種別']}<br><strong>金額：</strong>¥${amount}<br><strong>使用日：</strong>${ticket['使用日'] || '—'}`;
   } else if (expiry && expiry < today) {
     card.classList.add('used');
-    icon.textContent = '✗';
-    title.textContent = '有効期限切れです';
-    detail.innerHTML = `<strong>コード：</strong>${ticket['券コード']}<br><strong>有効期限：</strong>${expiry}`;
+    document.getElementById('result-icon').textContent = '✗';
+    document.getElementById('result-title').textContent = '有効期限切れです';
+    document.getElementById('result-detail').innerHTML = `<strong>コード：</strong>${ticket['券コード']}<br><strong>有効期限：</strong>${expiry}`;
   } else {
     card.classList.add('valid');
-    icon.textContent = '✓';
-    title.textContent = '有効な食事券です';
-    detail.innerHTML = `<strong>コード：</strong>${ticket['券コード']}<br><strong>種別：</strong>${ticket['種別']}<br><strong>金額：</strong>¥${amount}<br><strong>有効期限：</strong>${expiry}`;
+    document.getElementById('result-icon').textContent = '✓';
+    document.getElementById('result-title').textContent = '有効な食事券です';
+    document.getElementById('result-detail').innerHTML = `<strong>コード：</strong>${ticket['券コード']}<br><strong>種別：</strong>${ticket['種別']}<br><strong>金額：</strong>¥${amount}<br><strong>有効期限：</strong>${expiry}`;
     btnUse.style.display = 'block';
+    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 }
 
@@ -528,38 +379,24 @@ async function markAsUsed() {
   if (!currentTicket) return;
   const code = currentTicket['券コード'];
   if (!confirm(`${code} を使用済みにしますか？\nこの操作は取り消せません。`)) return;
-
   loading(true, 'Googleシートを更新中...');
   try {
-    await callAPI({ action: 'use', code: code });
+    await callAPI({ action: 'use', code });
     setSyncStatus(true, 'Googleシートを更新しました ✓');
     await checkTicket();
   } catch(e) {
     setSyncStatus(false, '更新に失敗しました');
     alert('更新に失敗しました。もう一度試してください。');
-  } finally {
-    loading(false);
-  }
+  } finally { loading(false); }
 }
 
-function simulateScan() {
-  const samples = ['FAV-001'];
-  const code = samples[Math.floor(Math.random() * samples.length)];
-  document.getElementById('scan-input').value = code;
-  checkTicket();
-}
-
-// ===== 発行 =====
-let issueCounter = 1;
-
+// 発行
 async function issueTicket() {
   const type = document.getElementById('issue-type').value;
   const amount = parseInt(document.getElementById('issue-amount').value);
   const expiry = document.getElementById('issue-expiry').value;
-
   if (!amount || amount < 1000) { alert('金額を正しく入力してください。'); return; }
   if (!expiry) { alert('有効期限を入力してください。'); return; }
-
   loading(true, '台帳に記録中...');
   try {
     const data = await callAPI({ action: 'getAll' });
@@ -568,27 +405,20 @@ async function issueTicket() {
     const nextNum = codes.length ? Math.max(...codes) + 1 : 2;
     const code = 'FAV-' + String(nextNum).padStart(3, '0');
     const today = new Date().toISOString().slice(0, 10);
-
     await callAPI({ action: 'add', code, type, amount, expiry, issued: today });
     setSyncStatus(true, 'Googleシートに記録しました ✓');
-
     const typeMap = { 'ギフト': 'GIFT VOUCHER', '購入': 'MEAL VOUCHER', '招待': 'INVITATION' };
     document.getElementById('prev-type').textContent = typeMap[type] || 'VOUCHER';
     document.getElementById('prev-amount').textContent = amount.toLocaleString();
     document.getElementById('prev-code').textContent = code;
     const d = new Date(expiry);
     document.getElementById('prev-expiry').textContent = `有効期限：${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日まで`;
-
-    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=${encodeURIComponent(code)}`;
-    document.getElementById('prev-qr').src = qrUrl;
+    document.getElementById('prev-qr').src = `https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=${encodeURIComponent(code)}`;
     document.getElementById('ticket-preview').classList.add('show');
-
   } catch(e) {
     setSyncStatus(false, '記録に失敗しました');
     alert('記録に失敗しました。ネットワーク接続を確認してください。');
-  } finally {
-    loading(false);
-  }
+  } finally { loading(false); }
 }
 
 function copyCode() {
@@ -596,47 +426,31 @@ function copyCode() {
   navigator.clipboard.writeText(code).then(() => alert(`コード ${code} をコピーしました。`));
 }
 
-// ===== 台帳 =====
+// 台帳
 async function loadLedger() {
   loading(true, 'データを読み込み中...');
   try {
     const data = await callAPI({ action: 'getAll' });
     const tickets = data.tickets || [];
     setSyncStatus(true, 'Googleシートと同期済み ✓');
-
     const unused = tickets.filter(t => t['状態'] === '未使用').length;
-    const used = tickets.filter(t => t['状態'] === '使用済').length;
     const total = tickets.filter(t => t['状態'] === '未使用').reduce((s, t) => s + Number(t['金額'] || 0), 0);
-
     document.getElementById('stats-row').innerHTML = `
       <div class="stat-card"><div class="stat-value">${tickets.length}</div><div class="stat-label">発行枚数</div></div>
       <div class="stat-card"><div class="stat-value">${unused}</div><div class="stat-label">未使用</div></div>
       <div class="stat-card"><div class="stat-value">¥${Math.floor(total/10000)}万</div><div class="stat-label">残高合計</div></div>
     `;
-
     const list = tickets.slice().reverse().map(t => {
       const badgeClass = t['状態'] === '使用済' ? 'badge-used' : 'badge-unused';
       const amount = Number(t['金額'] || 0).toLocaleString();
       const expiry = String(t['有効期限'] || '').slice(0, 10);
-      return `
-        <div class="ticket-item">
-          <div class="ticket-item-left">
-            <div class="ticket-item-code">${t['券コード']}</div>
-            <div class="ticket-item-info">${t['種別']}｜¥${amount}｜${expiry}まで</div>
-          </div>
-          <span class="badge ${badgeClass}">${t['状態']}</span>
-        </div>
-      `;
+      return `<div class="ticket-item"><div class="ticket-item-left"><div class="ticket-item-code">${t['券コード']}</div><div class="ticket-item-info">${t['種別']}｜¥${amount}｜${expiry}まで</div></div><span class="badge ${badgeClass}">${t['状態']}</span></div>`;
     }).join('');
-
     document.getElementById('ticket-list').innerHTML = list || '<p style="color:var(--text2);font-size:13px;text-align:center;padding:20px;">発行済みの券がありません</p>';
-
   } catch(e) {
     setSyncStatus(false, 'シートへの接続に失敗');
     document.getElementById('ticket-list').innerHTML = '<p style="color:#C07070;font-size:13px;text-align:center;padding:20px;">データの取得に失敗しました</p>';
-  } finally {
-    loading(false);
-  }
+  } finally { loading(false); }
 }
 </script>
 </body>
